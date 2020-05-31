@@ -75,6 +75,8 @@ contract BCCCappedToken is IERC20{ //ERC20
         address tokenOwner = msg.sender;
         require(tokenOwner != address(0), "Approve from the zero address"); //checking tokenOwner address is not a null address
         require(spender != address(0), "Approve to the zero address"); //checking spender address is not a null address
+		require(balanceOf(tokenOwner) >= amount, "Insufficient balance");
+		
         
         _allowances[tokenOwner][spender] = amount;
         

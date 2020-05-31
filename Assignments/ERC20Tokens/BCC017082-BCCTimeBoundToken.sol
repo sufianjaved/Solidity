@@ -98,6 +98,7 @@ contract BCCTimeBoundToken is IERC20{
         address tokenOwner = msg.sender;
         require(tokenOwner != address(0), "Approve from the zero address");
         require(spender != address(0), "Approve to the zero address");
+		require(balanceOf(tokenOwner) >= amount, "Insufficient balance");
         
         _allowances[tokenOwner][spender] = amount;
         

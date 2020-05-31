@@ -24,7 +24,7 @@ contract BCCTokenBuyable is IERC20{
     constructor () public {
         name = "Sufian Token";
         symbol = "SUFI";
-        decimals = 17;
+        decimals = 18;
         owner = msg.sender;
         tokenPrice = 2;
         //1 million tokens to be generated
@@ -105,6 +105,7 @@ contract BCCTokenBuyable is IERC20{
         address tokenOwner = msg.sender;
         require(tokenOwner != address(0), "Approve from the zero address");
         require(spender != address(0), "Approve to the zero address");
+		require(balanceOf(tokenOwner) >= amount, "Insufficient balance");
         
         _allowances[tokenOwner][spender] = amount;
         
